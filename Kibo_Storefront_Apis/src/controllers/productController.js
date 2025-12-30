@@ -1,4 +1,4 @@
-const {getAllProductsService, getProductByCodeService} = require("../service/productService");
+const {getAllProductsService, getProductByCodeService, createProductService} = require("../service/productService");
 
 const getAllProducts = async (req, res) => {
   try {
@@ -9,7 +9,7 @@ const getAllProducts = async (req, res) => {
     const data = await getAllProductsService(page, pageSize);
     res.json(data);
   } catch (err) {
-    res.status(500).json({ message: "INTERNAL SERVER ERROR" });
+         res.status(err.response?.status || 500).json({message : err.message || "INTERNAL SERVER ERROR"});
   }
 };
 
@@ -17,14 +17,21 @@ const getProductByCode = async(req, res) => {
     try{
 
         const productId = req.params.productId;
-        
-        console.log("Product code", productId);
         const product = await getProductByCodeService(productId);
         res.json(product);
     }catch(error){
-        res.status(404).json({message : "Product not found"});
+         res.status(err.response?.status || 500).json({message : err.message || "INTERNAL SERVER ERROR"});
     }
 };
 
+const createProduct = async (req, res) => {
+   try{ 
+  const createdProduct = await createProductService(req.body);
+  res.json(createdProduct);
+  }catch(err){
+         res.status(err.response?.status || 500).json({message : err.message || "INTERNAL SERVER ERROR"});
+  }
+}
 
-module.exports = {getAllProducts, getProductByCode}
+
+module.exports = {getAllProducts, getProductByCode, createProduct}

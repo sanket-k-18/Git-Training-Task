@@ -30,4 +30,9 @@ const getProductByCodeService = async (productCode) => {
     return response.data;
 }
 
-module.exports = {getAllProductsService, getProductByCodeService};
+const createProductService = async (product) => {
+  const response = await kiboClient.post("/api/commerce/catalog/admin/products", product);
+  return response.data;
+}
+
+module.exports = {getAllProductsService, getProductByCodeService, createProductService};

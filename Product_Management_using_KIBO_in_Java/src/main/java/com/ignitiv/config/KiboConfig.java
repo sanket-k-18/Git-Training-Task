@@ -20,7 +20,7 @@ public class KiboConfig {
 				.withTenantHost("t41316.sandbox.mozu.com")
 				.withHomeHost("home.mozu.com")
 				.build();
-		
+				
 		return config;
 				
 	}

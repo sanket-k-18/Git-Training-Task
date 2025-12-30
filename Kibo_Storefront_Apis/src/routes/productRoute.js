@@ -5,7 +5,8 @@ const productController = require("../controllers/productController");
 
 
 
-router.get("/get", productController.getAllProducts);
-router.get("/get/:productId", productController.getProductByCode);
+router.get("/", productController.getAllProducts);
+router.get("/:productId", productController.getProductByCode);
+router.post("/",productController.createProduct);
 
 module.exports = router;

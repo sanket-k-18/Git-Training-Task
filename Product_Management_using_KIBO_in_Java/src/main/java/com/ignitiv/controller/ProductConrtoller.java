@@ -29,43 +29,41 @@ public class ProductConrtoller {
 			CatalogAdminsProduct product =  client.getProductById(productId);
 			return ResponseEntity.ok(product);
 		}
-		catch(Exception e) {
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("INTERNAL SERVER ERROR");
+		catch(ApiException e) {
+			return ResponseEntity.status(e.getCode()).body(e.getMessage());
 		}
 	}
 	
 	
-	@GetMapping("")
+	@GetMapping
 	public ResponseEntity<?> getAllProducts(){
 		try {
 			CatalogAdminsProductCollection products = client.getAllProducts();
 			return ResponseEntity.ok(products);
-		}catch(Exception e) {
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("INTERNAL SERVER ERROR");
+		}catch(ApiException e) {
+			return ResponseEntity.status(e.getCode()).body(e.getMessage());
 
 		}
 	}
 	
-	@PostMapping("")
+	@PostMapping
 	public ResponseEntity<?> addProduct(@RequestBody CatalogAdminsProduct product){
-		try {
+		try {		
 			CatalogAdminsProduct addedProduct =  client.addProduct(product);
 			return ResponseEntity.ok(addedProduct);
 		}catch(ApiException e) {
-			System.out.println("Error" + e.getCode() + e.getMessage());
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("INTERNAL SERVER ERROR");
-
+			return ResponseEntity.status(e.getCode()).body(e.getMessage());
 		}
 	}
 	
 	
-	@DeleteMapping
+	@DeleteMapping("/{productId}")
 	public ResponseEntity<?> deleteProduct(@PathVariable String productId){
 		try {
 			client.deleteProduct(productId);
 			return ResponseEntity.ok().body("Product deleted");
-		} catch (ApiException e) {
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("INTERNAL SERVER ERROR");
+		}catch(ApiException e) {
+			return ResponseEntity.status(e.getCode()).body(e.getMessage());
 		}
 		
 	}

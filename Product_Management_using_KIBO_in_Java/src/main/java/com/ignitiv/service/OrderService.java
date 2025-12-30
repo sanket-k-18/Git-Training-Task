@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.ignitiv.config.KiboConfig;
 import com.kibocommerce.sdk.commerce.api.OrderApi;
 import com.kibocommerce.sdk.commerce.models.Order;
+import com.kibocommerce.sdk.commerce.models.OrderCollection;
 import com.kibocommerce.sdk.common.ApiException;
 
 @Service
@@ -37,5 +38,15 @@ public class OrderService {
 	public Order updateOrder(String orderId, Order order) throws ApiException{
 		OrderApi api = OrderApi.builder().withConfig(config.getConfiguration()).build();
 		return api.updateOrder(orderId, null, null, order);
+	}
+	
+	public OrderCollection getOrders() throws ApiException {
+		OrderApi api = OrderApi.builder().withConfig(config.getConfiguration()).build();
+		return api.getOrders(null, null, null, null, null, null, null, null, null);
+	}
+	
+	public Order getOrderByOderId(String orderId) throws ApiException {
+		OrderApi api = OrderApi.builder().withConfig(config.getConfiguration()).build();
+		return api.getOrder(orderId, null, null, null);
 	}
 }
