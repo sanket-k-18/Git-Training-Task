@@ -1,4 +1,4 @@
-const {getAllProductsService, getProductByCodeService, createProductService} = require("../service/productService");
+const {getAllProductsService, getProductByCodeService, createProductService, deleteProductService} = require("../service/productService");
 
 const getAllProducts = async (req, res) => {
   try {
@@ -33,5 +33,21 @@ const createProduct = async (req, res) => {
   }
 }
 
+const deleteProduct = async (req, res) => {
+  try{
+    const productId = req.params.productId;
+    const deletedProduct = await deleteProductService(productId);
+    res.json(deletedProduct);
+  }catch(err){
+    res.status(err.response?.status || 500).json({message : err.message || "INTERNAL SERVER ERROR"});
+  }
+}
 
-module.exports = {getAllProducts, getProductByCode, createProduct}
+
+
+
+
+
+
+
+module.exports = {getAllProducts, getProductByCode, createProduct, deleteProduct}

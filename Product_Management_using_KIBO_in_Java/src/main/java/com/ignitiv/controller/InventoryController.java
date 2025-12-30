@@ -1,6 +1,5 @@
 package com.ignitiv.controller;
 
-import javax.ws.rs.QueryParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

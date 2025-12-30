@@ -33,6 +33,12 @@ const getProductByCodeService = async (productCode) => {
 const createProductService = async (product) => {
   const response = await kiboClient.post("/api/commerce/catalog/admin/products", product);
   return response.data;
+} 
+
+const deleteProductService = async (productCode) => {
+  const response = await kiboClient.delete(`/api/commerce/catalog/admin/products/${productCode}`);
+  console.log("Deleted Product Response:", response.data);
+  return response.data;
 }
 
-module.exports = {getAllProductsService, getProductByCodeService, createProductService};
+module.exports = {getAllProductsService, getProductByCodeService, createProductService, deleteProductService};
