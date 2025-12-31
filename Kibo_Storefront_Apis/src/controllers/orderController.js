@@ -29,7 +29,6 @@ const cancleOrder = async (req, res) => {
         const response = await cancleOrderService(orderId, order);
         res.json(response);
     }catch(err){
-        console.log(err);   
          res.status(err.response?.status || 500).json({message : err.message || "INTERNAL SERVER ERROR"});
     }
 }
