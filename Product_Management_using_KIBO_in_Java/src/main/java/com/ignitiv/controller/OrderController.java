@@ -1,6 +1,7 @@
 package com.ignitiv.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ignitiv.service.OrderService;
 import com.kibocommerce.sdk.commerce.models.Order;
+import com.kibocommerce.sdk.commerce.models.OrderAction;
 import com.kibocommerce.sdk.commerce.models.OrderCollection;
+import com.kibocommerce.sdk.commerce.models.PaymentAction;
 import com.kibocommerce.sdk.common.ApiException;
 
 @RestController
@@ -32,6 +35,16 @@ public class OrderController {
 			return ResponseEntity.ok(createdOrder);
 		}catch(ApiException e) {
 			return ResponseEntity.status(e.getCode()).body(e.getMessage());
+		}
+	}
+	
+	@PostMapping("/action/{orderId}")
+	public ResponseEntity<?> performOrderAction(@PathVariable String orderId, @RequestBody OrderAction action){
+		try {
+			Order order = service.performOrderAction(orderId, action);
+			return ResponseEntity.ok(order);
+		}catch(ApiException e) {
+			return ResponseEntity.status(e.getCode()).body(e.getMessage());	
 		}
 	}
 	
@@ -85,4 +98,19 @@ public class OrderController {
 			return ResponseEntity.status(e.getCode()).body(e.getMessage());
 		}
 	}
+	
+	@PostMapping("/payment/{orderId}")
+	public ResponseEntity<?>createPayment(@PathVariable String orderId, @RequestBody PaymentAction payment){
+		try {
+			Order order = service.createPayment(orderId, payment);
+			return ResponseEntity.ok(order);
+		}catch(ApiException e) {
+			System.out.println(e);
+			return ResponseEntity.status(e.getCode()).body(e.getMessage());
+		}
+	}
+	
+	
+	
+	
 }

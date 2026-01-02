@@ -5,9 +5,12 @@ const inventoryController = require('../controllers/inventoryController');
 
 
 
-router.post('/', inventoryController.addInventory);
+router.post('/allocate', inventoryController.addInventory);
 
 router.get('/job/:jobId', inventoryController.getJob);
 
+router.get('/product/:productCode', inventoryController.getProductInventory);
 
-module.exports = router;
+router.post('/deallocate', inventoryController.removeInventory);
+
+module.exports = router;    

@@ -21,7 +21,6 @@ public class KiboConfig {
 				.withHomeHost("home.mozu.com")
 				.build();
 				
-		return config;
-				
+		return config;			
 	}
 }

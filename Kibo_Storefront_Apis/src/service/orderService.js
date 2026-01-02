@@ -18,6 +18,21 @@ const cancleOrderService = async (orderId, order) => {
     return response.data;
 }
 
+const getOrders = async () => {
+    const response = await kiboClient.get('/api/commerce/orders');
+    return response.data;
+}
+
+const getOrderById = async (orderId) => {
+    const respone = await kiboClient.get(`api/commerce/orders/${orderId}`);
+    return respone.data;
+}
+
+const performOrderActionService = async (orderId, action) => {
+    const response = await kiboClient.put(`api/commerce/orders/${orderId}/actions`, action);
+    return response.data;
+}
 
 
-module.exports = {createOrder, addProductsToOrderService, cancleOrderService};
+
+module.exports = {createOrder, addProductsToOrderService, cancleOrderService, getOrderById, getOrders, performOrderActionService};

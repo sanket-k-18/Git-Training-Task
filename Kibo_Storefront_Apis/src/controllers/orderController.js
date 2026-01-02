@@ -1,4 +1,4 @@
-const {createOrder, addProductsToOrderService, cancleOrderService} = require('../service/orderService') 
+const {createOrder, addProductsToOrderService, cancleOrderService, getOrderById, getOrders, performOrderActionService} = require('../service/orderService') 
 
 const makeOrder = async(req, res) => {
     try{
@@ -33,4 +33,33 @@ const cancleOrder = async (req, res) => {
     }
 }
 
-module.exports = {makeOrder, addProductsToOrder, cancleOrder}
+
+const getOrder = async (req, res) => {
+  const orderId = req.query.orderId;
+  // console.log(orderId);
+  try {
+    if(orderId){
+      const respone = await getOrderById(orderId);
+      res.json(respone);
+    }
+    const response = await getOrders();
+    res.json(response);
+  }catch(err){
+    // console.log(err)
+    res.status(err.response?.status || 500).json({message : err.message || "INTERNAL SERVER ERROR"});
+  }
+}
+
+const performOrderAction = async (req, res) => {
+    const orderId = req.params.orderId;
+    const action = req.body;
+
+    try{
+        const response = await performOrderActionService(orderId, action);
+        res.json(response);
+    }catch(err){
+         res.status(err.response?.status || 500).json({message : err.message || "INTERNAL SERVER ERROR"});
+    }
+}
+
+module.exports = {makeOrder, addProductsToOrder, cancleOrder, getOrder, performOrderAction};
