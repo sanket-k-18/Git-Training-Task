@@ -1,5 +1,7 @@
 package com.ignitiv.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,7 +10,9 @@ import com.kibocommerce.sdk.commerce.api.OrderApi;
 import com.kibocommerce.sdk.commerce.models.Order;
 import com.kibocommerce.sdk.commerce.models.OrderAction;
 import com.kibocommerce.sdk.commerce.models.OrderCollection;
+import com.kibocommerce.sdk.commerce.models.Payment;
 import com.kibocommerce.sdk.commerce.models.PaymentAction;
+import com.kibocommerce.sdk.commerce.models.PaymentCollection;
 import com.kibocommerce.sdk.common.ApiException;
 
 @Service
@@ -63,5 +67,53 @@ public class OrderService {
 		return api.createPaymentAction(orderId, payment);
 	}
 	
-
+	public Order performPaymentAction(String orderId, String paymentId, PaymentAction action) throws ApiException{
+		OrderApi api = OrderApi.builder().withConfig(config.getConfiguration()).build();
+		return api.performPaymentAction(orderId, paymentId, action);
+	}
+	
+	
+	public Payment getPayment(String orderId, String paymentId) throws ApiException {
+		OrderApi api = OrderApi.builder().withConfig(config.getConfiguration()).build();
+		return api.getPayment(orderId, paymentId);
+	}
+	
+	
+	public PaymentCollection getPayments(String orderId) throws ApiException {
+		OrderApi api = OrderApi.builder().withConfig(config.getConfiguration()).build();
+		return api.getPayments(orderId);
+	}
+	
+	public List<String> getAvailablePaymentActions(String orderId, String paymentId) throws ApiException{
+		OrderApi api = OrderApi.builder().withConfig(config.getConfiguration()).build();
+		return api.getAvailablePaymentActions(orderId, paymentId);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

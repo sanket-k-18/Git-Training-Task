@@ -34,5 +34,16 @@ const performOrderActionService = async (orderId, action) => {
 }
 
 
+const createPaymentService = async (orderId, payment) => {
+    const response = await kiboClient.post(`/api/commerce/orders/${orderId}/payments/actions`, payment);
+    // console.log("respnse" , response.data);
+    return response.data;
+}
 
-module.exports = {createOrder, addProductsToOrderService, cancleOrderService, getOrderById, getOrders, performOrderActionService};
+const performPaymentActionService = async(orderId, paymentId, action) => {
+    const response = await kiboClient.post(`api/commerce/orders/${orderId}/payments/${paymentId}/actions`, action);
+    return response.data;
+}
+
+
+module.exports = {createOrder, addProductsToOrderService, cancleOrderService, getOrderById, getOrders, performOrderActionService,createPaymentService, performPaymentActionService};

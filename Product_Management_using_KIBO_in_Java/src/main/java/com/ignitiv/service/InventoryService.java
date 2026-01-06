@@ -18,8 +18,6 @@ public class InventoryService {
 	@Autowired
 	KiboConfig config;
 	
-	
-
 	public JobQueueResponse createInventory(int tenantId, AllocateInventoryRequest allocateInventory) throws ApiException {
 		InventoryAllocationApi api = InventoryAllocationApi.builder().withConfig(config.getConfiguration()).build();
 		JobQueueResponse inv = api.allocateInventory(tenantId, allocateInventory);	
@@ -32,7 +30,6 @@ public class InventoryService {
 		return api.deallocateInventory(tenantId, allocateInventory);
 	}
 	
-	
 	public BaseResponse fulfillInventory(int tenantId, AllocateInventoryRequest allocateInventory) throws ApiException{
 		InventoryAllocationApi api = InventoryAllocationApi.builder().withConfig(config.getConfiguration()).build();
 		return api.fulfillInventory(tenantId, allocateInventory);
@@ -42,6 +39,5 @@ public class InventoryService {
 		InventoryJobApi api = InventoryJobApi.builder().withConfig(config.getConfiguration()).build();
 		return api.getJob(tenantId, jobId);
 	}
-	
 	
 }
