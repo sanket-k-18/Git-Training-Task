@@ -45,5 +45,19 @@ const performPaymentActionService = async(orderId, paymentId, action) => {
     return response.data;
 }
 
+const fulfillShipmentService = async(shipmentNo) => {
+    const response = await kiboClient.put(`api/commerce/shipments/${shipmentNo}/fulfilled`);
+    return response.data;
+}
 
-module.exports = {createOrder, addProductsToOrderService, cancleOrderService, getOrderById, getOrders, performOrderActionService,createPaymentService, performPaymentActionService};
+module.exports = {
+    createOrder, 
+    addProductsToOrderService, 
+    cancleOrderService, 
+    getOrderById, 
+    getOrders, 
+    performOrderActionService,
+    createPaymentService, 
+    performPaymentActionService,
+    fulfillShipmentService
+};

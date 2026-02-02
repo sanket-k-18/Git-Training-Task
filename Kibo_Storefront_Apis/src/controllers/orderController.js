@@ -1,4 +1,14 @@
-const {createOrder, addProductsToOrderService, cancleOrderService, getOrderById, getOrders, performOrderActionService} = require('../service/orderService') 
+const {
+  createOrder, 
+  addProductsToOrderService, 
+  cancleOrderService, 
+  getOrderById, 
+  getOrders, 
+  performOrderActionService, 
+  fulfillShipmentService, 
+  createPaymentService, 
+  performPaymentActionService
+   } = require('../service/orderService') 
 
 const makeOrder = async(req, res) => {
     try{
@@ -23,7 +33,6 @@ const addProductsToOrder = async (req, res) => {
 const cancleOrder = async (req, res) => {
     const orderId = req.params.orderId;
     const order = req.body;
-
 
     try{
         const response = await cancleOrderService(orderId, order);
@@ -62,4 +71,46 @@ const performOrderAction = async (req, res) => {
     }
 }
 
-module.exports = {makeOrder, addProductsToOrder, cancleOrder, getOrder, performOrderAction};
+const createPayment = async (req, res) => {
+  const orderId = req.params.orderId;
+  const payment = req.body;
+  try{
+    const response = await createPaymentService(orderId, payment);
+    res.json(response);
+  }catch(err){
+    res.status(err.respone?.status || 500).json({message : err.message || "INTERNAL SERVER ERROR"});
+  }
+}
+
+const fulfillShipment = async (req, res) => {
+  const shipmentNo = req.params.shipmentNo;
+  try{
+    const response = await fulfillShipmentService(shipmentNo);
+    res.json(response);
+  }catch(err){
+    res.status(err.response?.status || 500).json({message : err.message || "INTERNAL SERVER ERROR"});
+  }
+}
+
+const performPaymentAction = async(req, res) => {
+  const {orderId, paymentId} = req.params;
+  const payment = req.body;
+
+  try{
+    const response = await performPaymentActionService(orderId, paymentId, payment)
+    res.json(response);
+  }catch(err){
+    res.status(err.response?.status || 500).json({message : err.message || "INTERNAL SERVER ERROR"});
+  }
+}
+
+module.exports = {
+  makeOrder, 
+  addProductsToOrder, 
+  cancleOrder, 
+  getOrder, 
+  performOrderAction,
+  fulfillShipment,
+  createPayment,
+  performPaymentAction
+};

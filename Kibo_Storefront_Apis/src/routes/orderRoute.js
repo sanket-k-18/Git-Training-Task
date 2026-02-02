@@ -18,5 +18,7 @@ router.post("/payment/:orderId", orderController.createPayment);
 
 router.post("/payment/:orderId/action/:paymentId", orderController.performPaymentAction);
 
+router.put("/fulfill/:paymentId", orderController.fulfillShipment);
+
 
 module.exports = router;
