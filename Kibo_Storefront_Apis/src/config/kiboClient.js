@@ -1,7 +1,7 @@
 const axios = require("axios");
 const getKiboToken = require("./kiboTokenManager");
 
-const KIBO_BASE_URL = "https://t41316.sandbox.mozu.com";
+const KIBO_BASE_URL = "https://t52898.sandbox.mozu.com";
 const SITE_ID = process.env.KIBO_SITE_ID;
 
 const kiboClient = axios.create({

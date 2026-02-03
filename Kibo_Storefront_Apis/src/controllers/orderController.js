@@ -7,7 +7,14 @@ const {
   performOrderActionService, 
   fulfillShipmentService, 
   createPaymentService, 
-  performPaymentActionService
+  performPaymentActionService,
+  createReturnService,
+  returnAction,
+  addReturnItem,
+  getReturnableItems,
+  autoRefund,
+  getReturnItemsService,
+  createReturnShippingOrder
    } = require('../service/orderService') 
 
 const makeOrder = async(req, res) => {
@@ -15,7 +22,8 @@ const makeOrder = async(req, res) => {
     const createdOrder = await createOrder(req.body);
     res.json(createdOrder);
     }catch(err){
-         res.status(err.response?.status || 500).json({message : err.message || "INTERNAL SERVER ERROR"});
+      console.log(err);
+      res.status(err.response?.status || 500).json({message : err.message || "INTERNAL SERVER ERROR"});
     }
 }
 
@@ -42,10 +50,8 @@ const cancleOrder = async (req, res) => {
     }
 }
 
-
 const getOrder = async (req, res) => {
   const orderId = req.query.orderId;
-  // console.log(orderId);
   try {
     if(orderId){
       const respone = await getOrderById(orderId);
@@ -54,7 +60,6 @@ const getOrder = async (req, res) => {
     const response = await getOrders();
     res.json(response);
   }catch(err){
-    // console.log(err)
     res.status(err.response?.status || 500).json({message : err.message || "INTERNAL SERVER ERROR"});
   }
 }
@@ -104,6 +109,83 @@ const performPaymentAction = async(req, res) => {
   }
 }
 
+const createReturn = async (req, res) => {
+  const returnData = req.body;
+  try{
+    const response = await createReturnService(returnData);
+    res.json(response);
+  }catch(err){
+    res.status(err.response?.status || 500).json({message : err.message || "INTERNAL SERVER ERROR"});
+  }
+}
+
+const performReturnAction = async(req, res) => {
+  const action = req.body;
+  try{
+    const response = await returnAction(action);
+    res.json(response);
+  }catch(err){
+    console.log(err);
+    res.status(err.response?.status || 500).json({message : err.message || "INTERNAL SERVER ERROR"});
+  }
+}
+
+const createReturnItem = async(req, res) => {
+  const returnId = req.params.returnId;
+  const item = req.body;
+
+  try{
+    const response = await addReturnItem(returnId, item);
+    res.json(response);
+  }catch(err){
+    res.status(err.response?.status || 500).json({message : err.message || "INTERNAL SERVER ERROR"});
+  }
+}
+
+const getReturnables = async(req, res) => {
+  const orderId = req.params.orderId;
+  try{
+    const response = await getReturnableItems(orderId);
+    res.json(response);
+  }catch(err){
+    res.status(err.response?.status || 500).json({message : err.message || "INTERNAL SERVER ERROR"});
+
+  }
+}
+
+
+const refund = async(req, res) => {
+  const returnId = req.params.returnId;
+  const refund = req.body;
+  try{
+    const response = await autoRefund(returnId, refund);
+    res.json(response);
+  }catch(err){
+    console.log(err);
+    res.status(err.response?.status || 500).json({message : err.message || "INTERNAL SERVER ERROR"});
+  }
+}
+
+const getReturnItems = async (req, res) => {
+  const returnId = req.params.returnId;
+  try{
+    const response = await getReturnItemsService(returnId);
+    res.json(response);
+  }catch(err){
+    console.log(err)
+    res.status(err.response?.status || 500).json({message : err.message || "INTERNAL SERVER ERROR"});
+  }
+}
+
+const returnShippingOrder = async(req, res) => {
+  const returnId = req.params.returnId;
+  try{
+      const response = await createReturnShippingOrder(returnId);
+      res.json(response);
+  }catch(err){
+     res.status(err.response?.status || 500).json({message : err.message || "INTERNAL SERVER ERROR"});
+  }
+}
 module.exports = {
   makeOrder, 
   addProductsToOrder, 
@@ -112,5 +194,12 @@ module.exports = {
   performOrderAction,
   fulfillShipment,
   createPayment,
-  performPaymentAction
+  performPaymentAction,
+  createReturn,
+  performReturnAction,
+  createReturnItem,
+  getReturnables,
+  refund,
+  getReturnItems,
+  returnShippingOrder
 };
