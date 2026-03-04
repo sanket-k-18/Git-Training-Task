@@ -1,0 +1,5 @@
+operations,productCode,parentProductCode,productName,productTypeId,productUsage,productType,catalogId,masterCatalogId,shortDescription,longDescription,price,salePrice,msrp,colorOptions,materialOptions,sizeOptions,brand,gift-wrap,manageStock,outOfStockBehavior,packageHeight_unit,packageHeight_value,packageWidth_unit,packageWidth_value,packageLength_unit,packageLength_value,packageWeight_unit,packageWeight_value,isTaxable,isActive,upc
+create,NK-AM219,,Nike Air Max 270,42,Configurable,Fashion,1,1,,,12999,12999,10000,Green;Blue;Red,cotton;silk,S;M;L;XL,Nike,yes;no,TRUE,allowBackorder,in,1,in,1,in,1,lbs,1,TRUE,TRUE,1523652335
+create,NK-AM219-G-S,NK-AM219,Nike Air Max 270,42,Standard,Fashion,1,1,,,12999,12999,10000,Green,cotton,S,Nike,yes;no,TRUE,allowBackorder,in,1,in,1,in,1,lbs,1,TRUE,TRUE,1523652336
+create,NK-AM219-B-M,NK-AM219,Nike Air Max 270,42,Standard,Fashion,1,1,,,12999,12999,10000,Blue,silk,M,Nike,yes;no,TRUE,allowBackorder,in,1,in,1,in,1,lbs,1,TRUE,TRUE,1523652337
+create,ADS-UB22,,Adidas Ultraboost 22,42,Configurable,Fashion,1,1,,,15999,14999,14000,Green;Blue;Red,cotton;silk,S;M;L,Adidas,yes;no,TRUE,allowBackorder,in,1,in,1,in,1,lbs,1,TRUE,TRUE,2523652335

@@ -1,0 +1,51 @@
+operations,productCode,parentProductCode,productName,productTypeId,productUsage,productType,catalogId,masterCatalogId,shortDescription,longDescription,price,salePrice,msrp,colorOptions,materialOptions,sizeOptions,brand,gift-wrap,manageStock,outOfStockBehavior,packageHeight_unit,packageHeight_value,packageWidth_unit,packageWidth_value,packageLength_unit,packageLength_value,packageWeight_unit,packageWeight_value,isTaxable,isActive,upc
+create,PRD-001,,Nike AirFlex Running Shoes,2,Configurable,Fashion,1,1,,,12999,12999,10000,Green;Blue;Red,cotton;silk,S;M;L;XL,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000000
+create,PRD-001-R-M-c,PRD-001,Nike AirFlex Running Shoes,2,Standard,Fashion,1,1,,,12999,12999,10000,Red,cotton,M,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000001
+create,PRD-001-B-XL-c,PRD-001,Nike AirFlex Running Shoes,2,Standard,Fashion,1,1,,,12999,12999,10000,Blue,cotton,XL,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000002
+create,PRD-001-B-S-s,PRD-001,Nike AirFlex Running Shoes,2,Standard,Fashion,1,1,,,12999,12999,10000,Blue,silk,S,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000003
+create,PRD-001-R-S-s,PRD-001,Nike AirFlex Running Shoes,2,Standard,Fashion,1,1,,,12999,12999,10000,Red,silk,S,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000004
+create,PRD-002,,Adidas StreetLite Sneakers,2,Configurable,Fashion,1,1,,,12999,12999,10000,Green;Blue;Red,cotton;silk,S;M;L;XL,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000005
+create,PRD-002-B-L-c,PRD-002,Adidas StreetLite Sneakers,2,Standard,Fashion,1,1,,,12999,12999,10000,Blue,cotton,L,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000006
+create,PRD-002-B-S-c,PRD-002,Adidas StreetLite Sneakers,2,Standard,Fashion,1,1,,,12999,12999,10000,Blue,cotton,S,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000007
+create,PRD-002-R-S-s,PRD-002,Adidas StreetLite Sneakers,2,Standard,Fashion,1,1,,,12999,12999,10000,Red,silk,S,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000008
+create,PRD-002-R-XL-s,PRD-002,Adidas StreetLite Sneakers,2,Standard,Fashion,1,1,,,12999,12999,10000,Red,silk,XL,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000009
+create,PRD-003,,Levi's Urban Slim Fit Jeans,2,Configurable,Fashion,1,1,,,12999,12999,10000,Green;Blue;Red,cotton;silk,S;M;L;XL,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000010
+create,PRD-003-G-M-c,PRD-003,Levi's Urban Slim Fit Jeans,2,Standard,Fashion,1,1,,,12999,12999,10000,Green,cotton,M,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000011
+create,PRD-003-G-M-s,PRD-003,Levi's Urban Slim Fit Jeans,2,Standard,Fashion,1,1,,,12999,12999,10000,Green,silk,M,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000012
+create,PRD-003-R-M-s,PRD-003,Levi's Urban Slim Fit Jeans,2,Standard,Fashion,1,1,,,12999,12999,10000,Red,silk,M,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000013
+create,PRD-003-B-M-c,PRD-003,Levi's Urban Slim Fit Jeans,2,Standard,Fashion,1,1,,,12999,12999,10000,Blue,cotton,M,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000014
+create,PRD-004,,Puma Active Training T‑Shirt,2,Configurable,Fashion,1,1,,,12999,12999,10000,Green;Blue;Red,cotton;silk,S;M;L;XL,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000015
+create,PRD-004-G-L-s,PRD-004,Puma Active Training T‑Shirt,2,Standard,Fashion,1,1,,,12999,12999,10000,Green,silk,L,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000016
+create,PRD-004-G-M-s,PRD-004,Puma Active Training T‑Shirt,2,Standard,Fashion,1,1,,,12999,12999,10000,Green,silk,M,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000017
+create,PRD-004-R-L-s,PRD-004,Puma Active Training T‑Shirt,2,Standard,Fashion,1,1,,,12999,12999,10000,Red,silk,L,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000018
+create,PRD-004-G-M-c,PRD-004,Puma Active Training T‑Shirt,2,Standard,Fashion,1,1,,,12999,12999,10000,Green,cotton,M,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000019
+create,PRD-005,,Reebok Performance Joggers,2,Configurable,Fashion,1,1,,,12999,12999,10000,Green;Blue;Red,cotton;silk,S;M;L;XL,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000020
+create,PRD-005-G-XL-s,PRD-005,Reebok Performance Joggers,2,Standard,Fashion,1,1,,,12999,12999,10000,Green,silk,XL,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000021
+create,PRD-005-G-M-c,PRD-005,Reebok Performance Joggers,2,Standard,Fashion,1,1,,,12999,12999,10000,Green,cotton,M,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000022
+create,PRD-005-G-L-c,PRD-005,Reebok Performance Joggers,2,Standard,Fashion,1,1,,,12999,12999,10000,Green,cotton,L,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000023
+create,PRD-005-R-M-c,PRD-005,Reebok Performance Joggers,2,Standard,Fashion,1,1,,,12999,12999,10000,Red,cotton,M,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000024
+create,PRD-006,,Under Armour Sport Hoodie,2,Configurable,Fashion,1,1,,,12999,12999,10000,Green;Blue;Red,cotton;silk,S;M;L;XL,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000025
+create,PRD-006-R-S-s,PRD-006,Under Armour Sport Hoodie,2,Standard,Fashion,1,1,,,12999,12999,10000,Red,silk,S,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000026
+create,PRD-006-R-L-c,PRD-006,Under Armour Sport Hoodie,2,Standard,Fashion,1,1,,,12999,12999,10000,Red,cotton,L,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000027
+create,PRD-006-G-L-s,PRD-006,Under Armour Sport Hoodie,2,Standard,Fashion,1,1,,,12999,12999,10000,Green,silk,L,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000028
+create,PRD-006-B-L-s,PRD-006,Under Armour Sport Hoodie,2,Standard,Fashion,1,1,,,12999,12999,10000,Blue,silk,L,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000029
+create,PRD-007,,Zara Casual Cotton Shirt,2,Configurable,Fashion,1,1,,,12999,12999,10000,Green;Blue;Red,cotton;silk,S;M;L;XL,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000030
+create,PRD-007-G-M-c,PRD-007,Zara Casual Cotton Shirt,2,Standard,Fashion,1,1,,,12999,12999,10000,Green,cotton,M,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000031
+create,PRD-007-G-M-s,PRD-007,Zara Casual Cotton Shirt,2,Standard,Fashion,1,1,,,12999,12999,10000,Green,silk,M,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000032
+create,PRD-007-B-S-c,PRD-007,Zara Casual Cotton Shirt,2,Standard,Fashion,1,1,,,12999,12999,10000,Blue,cotton,S,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000033
+create,PRD-007-G-L-c,PRD-007,Zara Casual Cotton Shirt,2,Standard,Fashion,1,1,,,12999,12999,10000,Green,cotton,L,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000034
+create,PRD-008,,H&M Classic Polo T‑Shirt,2,Configurable,Fashion,1,1,,,12999,12999,10000,Green;Blue;Red,cotton;silk,S;M;L;XL,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000035
+create,PRD-008-R-L-s,PRD-008,H&M Classic Polo T‑Shirt,2,Standard,Fashion,1,1,,,12999,12999,10000,Red,silk,L,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000036
+create,PRD-008-R-S-c,PRD-008,H&M Classic Polo T‑Shirt,2,Standard,Fashion,1,1,,,12999,12999,10000,Red,cotton,S,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000037
+create,PRD-008-G-S-s,PRD-008,H&M Classic Polo T‑Shirt,2,Standard,Fashion,1,1,,,12999,12999,10000,Green,silk,S,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000038
+create,PRD-008-B-M-c,PRD-008,H&M Classic Polo T‑Shirt,2,Standard,Fashion,1,1,,,12999,12999,10000,Blue,cotton,M,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000039
+create,PRD-009,,Tommy Hilfiger Denim Jacket,2,Configurable,Fashion,1,1,,,12999,12999,10000,Green;Blue;Red,cotton;silk,S;M;L;XL,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000040
+create,PRD-009-G-S-c,PRD-009,Tommy Hilfiger Denim Jacket,2,Standard,Fashion,1,1,,,12999,12999,10000,Green,cotton,S,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000041
+create,PRD-009-R-M-c,PRD-009,Tommy Hilfiger Denim Jacket,2,Standard,Fashion,1,1,,,12999,12999,10000,Red,cotton,M,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000042
+create,PRD-009-G-L-c,PRD-009,Tommy Hilfiger Denim Jacket,2,Standard,Fashion,1,1,,,12999,12999,10000,Green,cotton,L,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000043
+create,PRD-009-G-M-s,PRD-009,Tommy Hilfiger Denim Jacket,2,Standard,Fashion,1,1,,,12999,12999,10000,Green,silk,M,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000044
+create,PRD-010,,Wrangler Rugged Cargo Pants,2,Configurable,Fashion,1,1,,,12999,12999,10000,Green;Blue;Red,cotton;silk,S;M;L;XL,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000045
+create,PRD-010-B-S-s,PRD-010,Wrangler Rugged Cargo Pants,2,Standard,Fashion,1,1,,,12999,12999,10000,Blue,silk,S,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000046
+create,PRD-010-G-S-c,PRD-010,Wrangler Rugged Cargo Pants,2,Standard,Fashion,1,1,,,12999,12999,10000,Green,cotton,S,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000047
+create,PRD-010-R-XL-s,PRD-010,Wrangler Rugged Cargo Pants,2,Standard,Fashion,1,1,,,12999,12999,10000,Red,silk,XL,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000048
+create,PRD-010-R-S-c,PRD-010,Wrangler Rugged Cargo Pants,2,Standard,Fashion,1,1,,,12999,12999,10000,Red,cotton,S,Nike,yes;no,True,allowBackorder,in,1,in,1,in,1,lbs,1,True,True,100000000049
