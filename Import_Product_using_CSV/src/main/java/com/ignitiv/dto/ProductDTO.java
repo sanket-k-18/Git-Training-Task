@@ -1,5 +1,7 @@
 package com.ignitiv.dto;
 
+import java.lang.reflect.Field;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -86,5 +88,20 @@ public class ProductDTO {
 				+ packageWidthValue + ", packageLengthUnit=" + packageLengthUnit + ", packageLengthValue="
 				+ packageLengthValue + ", packageWeightUnit=" + packageWeightUnit + ", packageWeightValue="
 				+ packageWeightValue + ", isTaxable=" + isTaxable + ", isActive=" + isActive + ", upc=" + upc + "]";
+	}
+	
+	
+	public String getFieldValue(String fieldName) {
+
+	    try {
+
+	        Field field = this.getClass().getDeclaredField(fieldName);
+	        field.setAccessible(true);
+	        Object value = field.get(this);
+	        return value == null ? null : value.toString();
+
+	    } catch (Exception e) {
+	        return null;
+	    }
 	}
 }
