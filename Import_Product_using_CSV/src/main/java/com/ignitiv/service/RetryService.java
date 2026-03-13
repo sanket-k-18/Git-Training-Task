@@ -22,36 +22,50 @@ public class RetryService {
     @Autowired
     private Helpers helper;
 
- 
     private boolean handleApiException(ApiException e, String context) {
         int code = e.getCode();
+        String body = e.getResponseBody();
+
         switch (code) {
             case 429 -> throw new RateLimitException(e);                      
             case 0, 503 -> throw new ApiRuntimeException(e);
-            case 404 -> { System.out.println("Not found, skipping: " + context); return true; }  // skip
-            default -> { System.out.println("Non-retryable error [" + code + "], skipping: " + context + " - " + e.getMessage()); return true; }  // skip 400, 500, etc.
+            case 500 -> {
+                if (body != null && body.contains("deadlock")) {
+                    System.out.println("Deadlock detected, retrying: " + context);
+                    throw new ApiRuntimeException(e);
+                }
+
+                System.out.println("Server error [500], skipping: " + context);
+                return true;
+            }
+            case 404 -> { System.out.println("Not found, skipping: " + context); return true; }  
+            default -> { System.out.println("Non-retryable error [" + code + "], skipping: " + context + " - " + e.getMessage()); return true; }  
         }
     }
 
     @Retryable(retryFor = {RateLimitException.class, ApiRuntimeException.class}, maxAttempts = 5, backoff = @Backoff(delay = 2000, multiplier = 2))
-    public void createProduct(CatalogAdminsProduct product) {
+    public void createProductWithCatalog(CatalogAdminsProduct product, Integer catalogId, Boolean isActive) {
         try {
             service.addProduct(product);
             System.out.println("Product created: " + product.getProductCode());
+            helper.addOrUpdateProductToCatalog(product.getProductCode(), catalogId, isActive, "create");
         } catch (ApiException e) {
             handleApiException(e, product.getProductCode());
         }
     }
 
     @Retryable(retryFor = {RateLimitException.class, ApiRuntimeException.class}, maxAttempts = 5, backoff = @Backoff(delay = 2000, multiplier = 2))
-    public void updateProduct(String productCode, CatalogAdminsProduct product) {
+    public void updateProductWithCatalog(String productCode, CatalogAdminsProduct product, Integer catalogId, Boolean isActive) {
         try {
             service.updateProduct(productCode, product);
             System.out.println("Product updated: " + productCode);
+            helper.addOrUpdateProductToCatalog(productCode, catalogId, isActive, "update");
         } catch (ApiException e) {
             handleApiException(e, productCode);
         }
     }
+
+ 
 
     @Retryable(retryFor = {RateLimitException.class, ApiRuntimeException.class}, maxAttempts = 5, backoff = @Backoff(delay = 2000, multiplier = 2))
     public void deleteProduct(String productCode) {
@@ -86,13 +100,23 @@ public class RetryService {
 
 
     @Recover
-    public void recoverCreateProduct(RateLimitException e, CatalogAdminsProduct product) {
-        System.out.println("createProduct exhausted retries (429): " + product.getProductCode());
+    public void recoverCreateProductWithCatalog(RateLimitException e, CatalogAdminsProduct product, Integer catalogId, Boolean isActive) {
+        System.out.println("createProductWithCatalog exhausted retries (429): " + product.getProductCode());
     }
 
     @Recover
-    public void recoverUpdateProduct(RateLimitException e, String productCode, CatalogAdminsProduct product) {
-        System.out.println("updateProduct exhausted retries (429): " + productCode);
+    public void recoverCreateProductWithCatalog(ApiRuntimeException e, CatalogAdminsProduct product, Integer catalogId, Boolean isActive) {
+        System.out.println("createProductWithCatalog exhausted retries (error): " + product.getProductCode());
+    }
+
+    @Recover
+    public void recoverUpdateProductWithCatalog(RateLimitException e, String productCode, CatalogAdminsProduct product, Integer catalogId, Boolean isActive) {
+        System.out.println("updateProductWithCatalog exhausted retries (429): " + productCode);
+    }
+
+    @Recover
+    public void recoverUpdateProductWithCatalog(ApiRuntimeException e, String productCode, CatalogAdminsProduct product, Integer catalogId, Boolean isActive) {
+        System.out.println("updateProductWithCatalog exhausted retries (error): " + productCode);
     }
 
     @Recover

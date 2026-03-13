@@ -51,6 +51,7 @@ public class Reader {
 					    "materialOptions",
 					    "sizeOptions",
 					    "brand",
+					    "modelNumber",
 					    "giftWrap",                
 					    "manageStock", 	
 					    "outOfStockBehavior",

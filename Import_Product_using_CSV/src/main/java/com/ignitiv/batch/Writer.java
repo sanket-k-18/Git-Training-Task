@@ -39,14 +39,12 @@ public class Writer implements ItemWriter<ProductWrapper> {
 						switch (operation.toLowerCase()) {
 						case "Create":
 						case "create":
-							retryService.createProduct(product);
-							retryService.addOrUpdateProductToCatalog(productCode, catalogId, isActive, operation);
+							retryService.createProductWithCatalog(product, catalogId, isActive);
 							createdProducts.add(productCode);
 							break;
 						case "Update":
 						case "update":
-							retryService.updateProduct(productCode, product);
-							retryService.addOrUpdateProductToCatalog(productCode, catalogId, isActive, operation);
+							retryService.updateProductWithCatalog(productCode, product, catalogId, isActive);
 							createdProducts.add(productCode);
 							break;
 						case "delete":

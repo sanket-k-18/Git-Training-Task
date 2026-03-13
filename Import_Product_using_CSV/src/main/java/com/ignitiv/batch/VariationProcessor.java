@@ -11,8 +11,11 @@ import org.springframework.stereotype.Component;
 import com.ignitiv.dto.ProductDTO;
 import com.ignitiv.service.ProductWrapper;
 import com.ignitiv.util.Helpers;
+import com.kibocommerce.sdk.catalogadministration.models.CatalogAdminsProductProperty;
+import com.kibocommerce.sdk.catalogadministration.models.CatalogAdminsProductPropertyValue;
 import com.kibocommerce.sdk.catalogadministration.models.ProductVariation;
 import com.kibocommerce.sdk.catalogadministration.models.ProductVariationOption;
+import com.kibocommerce.sdk.catalogadministration.models.ProductVariationProperty;
 
 @Component
 public class VariationProcessor implements ItemProcessor<ProductDTO, ProductWrapper> {
@@ -28,6 +31,9 @@ public class VariationProcessor implements ItemProcessor<ProductDTO, ProductWrap
         if (!isVariant) {
             return null; 
         }
+        
+        
+        
      
         Map<String, String> optionsMap = helper.extractOptions(item);
      
@@ -54,13 +60,19 @@ public class VariationProcessor implements ItemProcessor<ProductDTO, ProductWrap
         }
 
         String variationKey = String.join("-", sequences);
+        
+        
+        
+        List<ProductVariationProperty> properties = new ArrayList<>();
+        properties.add(helper.buildVariationProperty("tenant~modelNumber", item.getModelNumber()));
 
         ProductVariation variation = new ProductVariation();
 
         variation.setVariationProductCode(item.getProductCode());
         variation.setOptions(variationOptions);
         variation.setIsActive(true);
-        
+        variation.setProperties(properties);
+           
         
         return new ProductWrapper(variation,item.getParentProductCode(),variationKey,item.getCatalogId(), item.getOperations());
     }

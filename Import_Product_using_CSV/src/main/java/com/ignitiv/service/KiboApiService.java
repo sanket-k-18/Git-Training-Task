@@ -85,12 +85,17 @@ public class KiboApiService {
     }
 
     public AttributeInProductType addAttrToProductType(Integer productTypeId, AttributeInProductType attribute,String attrType) throws ApiException {
+    	
         ProductTypesApi api = ProductTypesApi.builder().withConfig(config.getConfiguration()).build();
         if (attrType.equalsIgnoreCase("extra")) {
             return api.addExtra(productTypeId, attribute);
         }
         if (attrType.equalsIgnoreCase("property")) {
             return api.addProperty(productTypeId, attribute);
+        }
+        
+        if(attrType.equalsIgnoreCase("variantProperty")) {
+        	return api.addVariantProperty(productTypeId, attribute);
         }
         return api.addOption(productTypeId, attribute);
     }
@@ -109,4 +114,9 @@ public class KiboApiService {
         ProductVariationsApi api = ProductVariationsApi.builder().withConfig(config.getConfiguration()).build();
         return api.updateProductVariation(productCode, variationKey, productVariation);
     }
+
+
+    
+    
+    
 }

@@ -33,6 +33,7 @@ import com.kibocommerce.sdk.catalogadministration.models.ProductPropertyValueLoc
 import com.kibocommerce.sdk.catalogadministration.models.ProductType;
 import com.kibocommerce.sdk.catalogadministration.models.ProductTypeCollection;
 import com.kibocommerce.sdk.catalogadministration.models.ProductVariationOption;
+import com.kibocommerce.sdk.catalogadministration.models.ProductVariationProperty;
 import com.kibocommerce.sdk.common.ApiException;
 
 @Component
@@ -94,6 +95,8 @@ public class Helpers {
 					type.getProperties().forEach(a -> attrSet.add(a.getAttributeFQN()));
 				if (type.getExtras() != null)
 					type.getExtras().forEach(a -> attrSet.add(a.getAttributeFQN()));
+				if (type.getVariantProperties() != null)
+					type.getVariantProperties().forEach(a -> attrSet.add(a.getAttributeFQN()));
 			}
 			startIndex += pageSize;
 		}
@@ -152,10 +155,15 @@ public class Helpers {
 
 		if (ensuredAttributes.contains(cacheKey))
 			return;
-
+		
+		String createdType = type;
+		
 		CatalogAdminsAttribute attribute = getOrFetchAttribute(attrFQN);
 		if (attribute == null) {
-			attribute = createAttribute(attrName, type, value);
+			if(type.equals("variantProperty")) {
+				createdType = "property";
+			}
+			attribute = createAttribute(attrName, createdType, value);
 		}
 		if (!isProductTypeAttributeExist(productTypeId, attrFQN)) {
 			addAttributeToProductType(productTypeId, attrFQN, value, type, attribute);
@@ -240,6 +248,7 @@ public class Helpers {
 			attribute.setIsProperty(false);
 			break;
 		case "property":
+		case "variantProperty":
 			attribute.setIsProperty(true);
 			attribute.setIsExtra(false);
 			attribute.setIsOption(false);
@@ -252,7 +261,7 @@ public class Helpers {
 		default:
 			throw new IllegalArgumentException("Invalid attribute type: " + attrType);
 		}
-
+		
 		CatalogAdminsAttribute created = service.createAttribute(attribute);
 		attributeCache.put("tenant~" + attributeName, created);
 		System.out.println("Attribute Created: tenant~" + attributeName);
@@ -273,6 +282,7 @@ public class Helpers {
 				attribute.addVocabularyValuesItem(attrValue);
 			}
 		}
+		System.out.println(attribute);
 		return service.addAttrToProductType(productTypeId, attribute, attrType);
 	}
 
@@ -323,6 +333,22 @@ public class Helpers {
 		content.setLocaleCode("en-US");
 		option.setContent(content);
 		return option;
+	}
+	
+	public ProductVariationProperty buildVariationProperty(String fqn, String value) {
+		ProductVariationProperty property = new ProductVariationProperty();
+		property.setAttributeFQN(fqn);
+		List<CatalogAdminsProductPropertyValue> values = new ArrayList<>();
+		for (String val : value.split(";")) {
+			CatalogAdminsProductPropertyValue pv = new CatalogAdminsProductPropertyValue();
+			ProductPropertyValueLocalizedContent c = new ProductPropertyValueLocalizedContent();
+			c.setStringValue(val.trim());
+			pv.setContent(c);
+			pv.setValue(val.trim());
+			values.add(pv);
+		}
+		property.setValues(values);
+		return property;
 	}
 
 	public void setOptionColumns(List<String> headers) {
@@ -380,31 +406,35 @@ public class Helpers {
 	}
 
 	private void findAndSetAttributeType(CatalogAdminsAttribute attribute, String attrValue) {
+
 		if (attrValue.contains(";") && !attrValue.toLowerCase().contains("yes;no")) {
 			attribute.setInputType("List");
 			attribute.setDataType("String");
 			attribute.setValueType("Predefined");
 			return;
 		}
+
 		if (attrValue.toLowerCase().contains("yes;no")) {
 			attribute.setInputType("YesNo");
 			attribute.setDataType("Bool");
-			attribute.setValueType("ShopperEntered");
+			attribute.setValueType("AdminEntered");
 			return;
 		}
+
 		try {
 			Double.parseDouble(attrValue);
 			attribute.setInputType("TextBox");
 			attribute.setDataType("Number");
-			attribute.setValueType("ShopperEntered");
+			attribute.setValueType("AdminEntered");
 			return;
 		} catch (Exception ignored) {
 		}
+
 		try {
 			LocalDate.parse(attrValue);
 			attribute.setInputType("Date");
 			attribute.setDataType("DateTime");
-			attribute.setValueType("ShopperEntered");
+			attribute.setValueType("AdminEntered");
 			return;
 		} catch (Exception ignored) {
 		}

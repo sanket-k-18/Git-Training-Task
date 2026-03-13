@@ -35,7 +35,6 @@ public class ParentProcessor implements ItemProcessor<ProductDTO, ProductWrapper
             return new ProductWrapper(product, operation);
         }
 
-     
         product.setProductCode(item.getProductCode());
         product.setMasterCatalogId(item.getMasterCatalogId());
         product.setIsTaxable(item.getIsTaxable());
@@ -95,6 +94,7 @@ public class ParentProcessor implements ItemProcessor<ProductDTO, ProductWrapper
         List<AttributeDefinition> attributesToAttach = new ArrayList<>();
         attributesToAttach.add(new AttributeDefinition("brand",item.getBrand(),"property"));
         attributesToAttach.add(new AttributeDefinition("gift-wrap",item.getGiftWrap(),"extra"));
+        attributesToAttach.add(new AttributeDefinition("modelNumber", item.getModelNumber(), "variantProperty"));
 
         if (isConfigurable) {
             Map<String, String> optionsMap = helper.extractOptions(item);

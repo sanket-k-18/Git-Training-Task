@@ -44,6 +44,8 @@ public class ProductDTO {
 	private String materialOptions;
 
 	private String brand;
+	
+	private String modelNumber;
 
 	private String giftWrap;
 
@@ -74,21 +76,6 @@ public class ProductDTO {
 	private String upc;
 	
 	
-	@Override
-	public String toString() {
-		return "ProductDTO [operations=" + operations + ", productCode=" + productCode + ", parentProductCode="
-				+ parentProductCode + ", productName=" + productName + ", productUsage=" + productUsage
-				+ ", productTypeId=" + productTypeId + ", productType=" + productType + ", catalogId=" + catalogId
-				+ ", masterCatalogId=" + masterCatalogId + ", shortDescription=" + shortDescription
-				+ ", longDescription=" + longDescription + ", price=" + price + ", salePrice=" + salePrice + ", msrp="
-				+ msrp + ", colorOptions=" + colorOptions + ", sizeOptions=" + sizeOptions + ", brand=" + brand
-				+ ", giftWrap=" + giftWrap + ", manageStock=" + manageStock + ", outOfStockBehavior="
-				+ outOfStockBehavior + ", packageHeightUnit=" + packageHeightUnit + ", packageHeightValue="
-				+ packageHeightValue + ", packageWidthUnit=" + packageWidthUnit + ", packageWidthValue="
-				+ packageWidthValue + ", packageLengthUnit=" + packageLengthUnit + ", packageLengthValue="
-				+ packageLengthValue + ", packageWeightUnit=" + packageWeightUnit + ", packageWeightValue="
-				+ packageWeightValue + ", isTaxable=" + isTaxable + ", isActive=" + isActive + ", upc=" + upc + "]";
-	}
 	
 	
 	public String getFieldValue(String fieldName) {
@@ -104,4 +91,45 @@ public class ProductDTO {
 	        return null;
 	    }
 	}
+
+
+
+
+	@Override
+	public String toString() {
+		return "ProductDTO [operations=" + operations + ", productCode=" + productCode + ", parentProductCode="
+				+ parentProductCode + ", productName=" + productName + ", productUsage=" + productUsage
+				+ ", productTypeId=" + productTypeId + ", productType=" + productType + ", catalogId=" + catalogId
+				+ ", masterCatalogId=" + masterCatalogId + ", shortDescription=" + shortDescription
+				+ ", longDescription=" + longDescription + ", price=" + price + ", salePrice=" + salePrice + ", msrp="
+				+ msrp + ", colorOptions=" + colorOptions + ", sizeOptions=" + sizeOptions + ", materialOptions="
+				+ materialOptions + ", brand=" + brand + ", modelNumber=" + modelNumber + ", giftWrap=" + giftWrap
+				+ ", manageStock=" + manageStock + ", outOfStockBehavior=" + outOfStockBehavior + ", packageHeightUnit="
+				+ packageHeightUnit + ", packageHeightValue=" + packageHeightValue + ", packageWidthUnit="
+				+ packageWidthUnit + ", packageWidthValue=" + packageWidthValue + ", packageLengthUnit="
+				+ packageLengthUnit + ", packageLengthValue=" + packageLengthValue + ", packageWeightUnit="
+				+ packageWeightUnit + ", packageWeightValue=" + packageWeightValue + ", isTaxable=" + isTaxable
+				+ ", isActive=" + isActive + ", upc=" + upc + ", getOperations()=" + getOperations()
+				+ ", getProductCode()=" + getProductCode() + ", getParentProductCode()=" + getParentProductCode()
+				+ ", getProductName()=" + getProductName() + ", getProductUsage()=" + getProductUsage()
+				+ ", getProductTypeId()=" + getProductTypeId() + ", getProductType()=" + getProductType()
+				+ ", getCatalogId()=" + getCatalogId() + ", getMasterCatalogId()=" + getMasterCatalogId()
+				+ ", getShortDescription()=" + getShortDescription() + ", getLongDescription()=" + getLongDescription()
+				+ ", getPrice()=" + getPrice() + ", getSalePrice()=" + getSalePrice() + ", getMsrp()=" + getMsrp()
+				+ ", getColorOptions()=" + getColorOptions() + ", getSizeOptions()=" + getSizeOptions()
+				+ ", getMaterialOptions()=" + getMaterialOptions() + ", getBrand()=" + getBrand()
+				+ ", getModelNumber()=" + getModelNumber() + ", getGiftWrap()=" + getGiftWrap() + ", getManageStock()="
+				+ getManageStock() + ", getOutOfStockBehavior()=" + getOutOfStockBehavior()
+				+ ", getPackageHeightUnit()=" + getPackageHeightUnit() + ", getPackageHeightValue()="
+				+ getPackageHeightValue() + ", getPackageWidthUnit()=" + getPackageWidthUnit()
+				+ ", getPackageWidthValue()=" + getPackageWidthValue() + ", getPackageLengthUnit()="
+				+ getPackageLengthUnit() + ", getPackageLengthValue()=" + getPackageLengthValue()
+				+ ", getPackageWeightUnit()=" + getPackageWeightUnit() + ", getPackageWeightValue()="
+				+ getPackageWeightValue() + ", getIsTaxable()=" + getIsTaxable() + ", getIsActive()=" + getIsActive()
+				+ ", getUpc()=" + getUpc() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
+	}
+	
+	
+	
 }
