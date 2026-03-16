@@ -31,12 +31,8 @@ public class VariationProcessor implements ItemProcessor<ProductDTO, ProductWrap
         if (!isVariant) {
             return null; 
         }
-        
-        
-        
-     
+      
         Map<String, String> optionsMap = helper.extractOptions(item);
-     
         List<String> sequences = new ArrayList<>();
         List<ProductVariationOption> variationOptions = new ArrayList<>();
 
@@ -47,9 +43,8 @@ public class VariationProcessor implements ItemProcessor<ProductDTO, ProductWrap
             String value = entry.getValue();
 
             Map<Object, Integer> attributeSequence = helper.getAttributeSequence(attrFQN);
-
             Integer seq = attributeSequence.get(value);
-
+           
             sequences.add(seq != null ? seq.toString() : null);
             
             ProductVariationOption option = new ProductVariationOption();

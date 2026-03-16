@@ -116,7 +116,7 @@ public class ParentProcessor implements ItemProcessor<ProductDTO, ProductWrapper
         if (isConfigurable) {
             Map<String, String> optionsMap = helper.extractOptions(item);
             List<CatalogAdminsProductOption> options = new ArrayList<>();
-            List<ProductVariationOption>     drivers = new ArrayList<>();
+            List<ProductVariationOption> drivers = new ArrayList<>();
 
             for (Map.Entry<String, String> entry : optionsMap.entrySet()) {
                 String attrFQN = "tenant~" + entry.getKey();
